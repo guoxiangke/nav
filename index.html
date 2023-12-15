@@ -12,32 +12,23 @@
 	  </div>
 	</div>
 <script>
-// 获取当前页面的 URL 参数
 const urlParams = new URLSearchParams(window.location.search);
 const sponsorParam = urlParams.get('sponsor');
 
-// 如果 URL 中包含 "?sponsor=郭向科"
 if (sponsorParam) {
-  // 创建 div 元素
   const welcomeDiv = document.createElement('div');
   const innerHTML = `<div class="mx-auto mt-4 flex items-center justify-center text-gray-600"><span class="text-gray-900">${sponsorParam}</span>，感謝您贊助榮主導航，支持網絡宣教。</div>`;
   welcomeDiv.innerHTML = innerHTML;
-  // 将 div 元素添加到 body 中
-  // document.body.insertBefore(welcomeDiv, document.body.firstChild);
   document.body.appendChild(welcomeDiv);
 }
 
-// 获取 JSON 数据的链接
 const jsonUrl = 'https://nav.savefamily.net/api/';
 
-// 从链接读取 JSON 数据
 fetch(jsonUrl)
   .then(response => response.json())
   .then(data => {
-    // 获取容器元素
     const container = document.getElementById('container');
 
-    // 循环拼接 JSON 数据为 div，并插入到容器中
     const items = data.data.tools.filter(item => item.hide === false);
     items.forEach(item => {
       const div = document.createElement('div');
