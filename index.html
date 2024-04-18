@@ -14,6 +14,9 @@
 <script>
 const urlParams = new URLSearchParams(window.location.search);
 const sponsorParam = urlParams.get('sponsor');
+let vips = urlParams.get('vips');
+console.log(vips) 
+if(vips) vips = vips.split(",");
 
 if (sponsorParam) {
   const welcomeDiv = document.createElement('div');
@@ -28,7 +31,32 @@ fetch(jsonUrl)
   .then(response => response.json())
   .then(data => {
     const container = document.getElementById('container');
+    if(vips){
+      const items = data.data.tools;//.filter(item => item.hide === false);
+      items.forEach(item => {
+        if(vips.includes(item.id.toString())){
+          const div = document.createElement('div');
+          div.classList.add('bg-grey-500', 'rounded-lg', 'p-4', 'shadow-lg');
 
+          const innerHTML = `
+            <div class="flex items-center justify-center">
+              <img class="max-h-36" src="${item.logo}" alt="${item.name}" title="${item.name}" />
+            </div>
+            <div class="font-large text-gray-900">${item.name}</div>
+          `;
+
+          div.innerHTML = innerHTML;
+
+          const link = document.createElement('a');
+          link.href = `https://influx.simai.life/api?redirect=${item.url}?metric=NFC%26keyword=nav%26target=${item.name}`;
+          link.appendChild(div);
+
+          container.appendChild(link);
+        }
+      });
+      return;
+    }
+    // default!
     const items = data.data.tools.filter(item => item.hide === false);
     items.forEach(item => {
       const div = document.createElement('div');
@@ -49,6 +77,7 @@ fetch(jsonUrl)
 
       container.appendChild(link);
     });
+
   })
   .catch(error => console.error('Error fetching JSON:', error));
 </script>
