@@ -49,7 +49,7 @@ fetch(jsonUrl)
           div.innerHTML = innerHTML;
 
           const link = document.createElement('a');
-          link.href = `${redirectUrl}${item.url}?metric=NFC%26keyword=nav%26name=${item.name}`;
+          link.href = `${redirectUrl}${item.url}?metric=NAV%26name=${item.name}`;
           link.appendChild(div);
 
           container.appendChild(link);
@@ -73,7 +73,7 @@ fetch(jsonUrl)
       div.innerHTML = innerHTML;
 
       const link = document.createElement('a');
-      link.href = `${redirectUrl}${item.url}?metric=NFC%26keyword=nav%26title=${item.name}`;
+      link.href = `${redirectUrl}${item.url}?metric=NAV%26title=${item.name}`;
       link.appendChild(div);
 
       container.appendChild(link);
