@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Player</title>
+    </head>
+    <body>
+        <div id="aplayer"></div>
+            <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.0/dist/APlayer.min.js"></script>
+            <script>
+                window.onload = function () {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const album = urlParams.get('mid')??'ba1d4d91ebf17ea4';
+
+                    const ap2 = new APlayer({
+                        container: document.getElementById('aplayer'),
+                        // fixed: true,
+                        autoplay: false,
+                        audio: [],
+                        autoplay:true,
+                    });
+
+                    function addDiv() {
+                        var objTo = document.getElementById('list');
+                        var divtest = document.createElement("div");
+                        divtest.innerHTML = "new div";
+                        objTo.appendChild(divtest);
+                    }
+                    const jsonUrl = 'http://x-resource.test/yage/'+album;
+                    fetch(jsonUrl)
+                      .then(response => response.json())
+                      .then(data => {
+                        Object.values(data).forEach(item => {
+                            const audio = {
+                                name: item.title,
+                                artist: '诗歌',
+                                url: item.path,
+                                cover: 'http://cdn.yingxuapp.cn/cover/80/'+album+'.jpg',
+                            }
+                            ap2.list.add(audio)
+                        });
+                      });
+                }
+
+            </script>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+            <style>
+                .prose ol > li::before {
+                    content: '';
+                }
+            </style>
+    </body>
+</html>
