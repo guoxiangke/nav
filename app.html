@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>App下载</title>
+</head>
+<body>
+	<div class="relative overflow-auto rounded-xl p-8">
+	  <div id="container" class="text-black-100 bg-stripes-grey grid grid-cols-3 grid-rows-3 gap-4 rounded-lg text-center font-mono text-sm leading-6">
+      <div class="bg-grey-500  rounded-lg p-4 shadow-lg">
+          <a href="https://app.wedevote.com/">
+            <div class="flex items-center justify-center">
+              <img class="max-h-36" src="https://images.simai.life/images/2024/06/db56a2b5bfb06a7ea7651ac3f821fe2f.png" alt="微读圣经" title="微读圣经" />
+            </div>
+            <div class="font-large text-gray-900">微读圣经</div>
+          </a>
+      </div>
+
+      <div class="bg-grey-500  rounded-lg p-4 shadow-lg">
+          <a href="https://znsj.wxsorg.com/">
+            <div class="flex items-center justify-center">
+              <img class="max-h-36" src="https://images.simai.life/images/2024/06/6d5c6621e2c9af0989235edbad1990bb.png" alt="主内圣经" title="主内圣经" />
+            </div>
+            <div class="font-large text-gray-900">主内圣经</div>
+          </a>
+      </div>
+
+      <div class="bg-grey-500  rounded-lg p-4 shadow-lg">
+          <a href="https://www.fytvapp.com/">
+            <div class="flex items-center justify-center">
+              <img class="max-h-36" src="https://www.fytvapp.com/img/5e734b8fc67ba.png" alt="2" title="福音TV" />
+            </div>
+            <div class="font-large text-gray-900">福音TV</div>
+          </a>
+      </div>
+
+
+      <div class="bg-grey-500  rounded-lg p-4 shadow-lg">
+          <a target="_blank" href="https://images.simai.life/images/2024/06/dd0d8352d8e57ae351a2d3e13e226760.apk">
+            <div class="flex items-center justify-center">
+              <img class="max-h-36" src="https://images.simai.life/images/2024/06/4deb962b49d7f64cd7149bafc406f111.png" alt="2" title="诗歌本Android.apk" />
+            </div>
+            <div class="font-large text-gray-900">诗歌本Android.apk</div>
+          </a>
+      </div>
+
+
+      <div class="bg-grey-500  rounded-lg p-4 shadow-lg">
+          <a target="_blank" href="https://apps.apple.com/us/app/%E8%AF%97%E6%AD%8C%E6%9C%AC/id678058498">
+            <div class="flex items-center justify-center">
+              <img class="max-h-36" src="https://images.simai.life/images/2024/06/4deb962b49d7f64cd7149bafc406f111.png" alt="2" title="诗歌本(美区)" />
+            </div>
+            <div class="font-large text-gray-900">诗歌本(美区)</div>
+          </a>
+      </div>
+
+
+
+
+
+      <div class="bg-grey-500  rounded-lg p-4 shadow-lg">
+          <a href="https://zanmei.app/">
+            <div class="flex items-center justify-center">
+              <img class="max-h-36" src="https://zanmei.app/images/favicon-144.webp" alt="2" title="爱赞美（原赞美诗网）" />
+            </div>
+            <div class="font-large text-gray-900">爱赞美（原赞美诗网）</div>
+          </a>
+      </div>
+
+
+
+      <div class="bg-grey-500  rounded-lg p-4 shadow-lg">
+          <a href="https://images.simai.life/images/2024/06/5ff679b45b6c4f786605ffcfad07a135.apk">
+            <div class="flex items-center justify-center">
+              <img class="max-h-36" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/14/83/4b/14834bce-9a6d-12f1-0a81-fbcd1d9a9317/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/246x0w.png" alt="2" title="Zoom安卓手机.apk" />
+            </div>
+            <div class="font-large text-gray-900">Zoom安卓手机.apk</div>
+          </a>
+      </div>
+
+
+
+      <div class="bg-grey-500  rounded-lg p-4 shadow-lg">
+          <a href="https://apps.apple.com/cn/app/zoom-workplace/id546505307">
+            <div class="flex items-center justify-center">
+              <img class="max-h-36" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/14/83/4b/14834bce-9a6d-12f1-0a81-fbcd1d9a9317/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/246x0w.png" alt="2" title="Zoom苹果手机(国区)" />
+            </div>
+            <div class="font-large text-gray-900">Zoom苹果手机(国区)</div>
+          </a>
+      </div>
+
+
+	  </div>
+	</div>
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const sponsorParam = urlParams.get('sponsor');
+let vips = urlParams.get('vips');
+console.log(vips) 
+if(vips) vips = vips.split(",");
+
+if (sponsorParam) {
+  const welcomeDiv = document.createElement('div');
+  const innerHTML = `<div class="mx-auto mt-4 flex items-center justify-center text-gray-600"><span class="text-gray-900">${sponsorParam}</span>，感謝您贊助榮主導航，支持網絡宣教。</div>`;
+  welcomeDiv.innerHTML = innerHTML;
+  document.body.appendChild(welcomeDiv);
+}
+
+const jsonUrl = 'https://nav.savefamily.net/api/';
+const redirectUrl = 'https://statistics.savefamily.net/redirect?target=';
+if(0)
+fetch(jsonUrl)
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById('container');
+    if(vips){
+      const items = data.data.tools;//.filter(item => item.hide === false);
+      items.forEach(item => {
+        if(vips.includes(item.id.toString())){
+          const div = document.createElement('div');
+          div.classList.add('bg-grey-500', 'rounded-lg', 'p-4', 'shadow-lg');
+
+          const innerHTML = `
+            <div class="flex items-center justify-center">
+              <img class="max-h-36" src="${item.logo}" alt="${item.name}" title="${item.name}" />
+            </div>
+            <div class="font-large text-gray-900">${item.name}</div>
+          `;
+
+          div.innerHTML = innerHTML;
+
+          const link = document.createElement('a');
+          link.href = `${redirectUrl}${item.url}?metric=NAV%26name=${item.name}`;
+          link.appendChild(div);
+
+          container.appendChild(link);
+        }
+      });
+      return;
+    }
+    // default!
+    const items = data.data.tools.filter(item => item.hide === false);
+    items.forEach(item => {
+      const div = document.createElement('div');
+      div.classList.add('bg-grey-500', 'rounded-lg', 'p-4', 'shadow-lg');
+
+      const innerHTML = `
+        <div class="flex items-center justify-center">
+          <img class="max-h-36" src="${item.logo}" alt="${item.name}" title="${item.name}" />
+        </div>
+        <div class="font-large text-gray-900">${item.name}</div>
+      `;
+
+      div.innerHTML = innerHTML;
+
+      const link = document.createElement('a');
+      link.href = `${redirectUrl}${item.url}?metric=NAV%26title=${item.name}`;
+      link.appendChild(div);
+
+      container.appendChild(link);
+    });
+
+  })
+  .catch(error => console.error('Error fetching JSON:', error));
+</script>
+
+</body>
+</html>
