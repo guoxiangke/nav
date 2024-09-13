@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>荣主导航</title>
+</head>
+<body>
+	<div class="relative overflow-auto rounded-xl p-8">
+	  <div id="container" class="text-black-100 bg-stripes-grey grid grid-cols-3 grid-rows-3 gap-4 rounded-lg text-center font-mono text-sm leading-6">
+	  </div>
+	  <footer class="mt-8 p-4 bg-gray-100 rounded-lg text-center">
+	    <h2 class="font-bold text-lg">联络我们</h2>
+	    <p><strong>良友电台</strong></p>
+	    <div class="text-left text-gray-500 inline-block">
+	      <p>短信：<a href="sms:+8613229966122">+86 1322 9966 122</a></p>
+	      <p>电邮：<a href="mailto:arc@liangyou.net">arc@liangyou.net</a></p>
+	      <p>地址：香港九龙大有街1号10楼</p>
+	    </div>
+	    <br><br>
+	    <p><strong>良友圣经学院</strong></p>
+	    <div class="text-left text-gray-500 inline-block">
+	      <p>电邮：<a href="mailto:school@liangyou.net">school@liangyou.net</a></p>
+	      <p>地址：香港九龙大有街1号10楼</p>
+	    </div>
+	  </footer>
+	</div>
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const sponsorParam = urlParams.get('sponsor');
+let vips = urlParams.get('vips');
+console.log(vips) 
+if(vips) vips = vips.split(",");
+
+if (sponsorParam) {
+  const welcomeDiv = document.createElement('div');
+  const innerHTML = `<div class="mx-auto mt-4 flex items-center justify-center text-gray-600"><span class="text-gray-900">${sponsorParam}</span>，感謝您贊助榮主導航，支持網絡宣教。</div>`;
+  welcomeDiv.innerHTML = innerHTML;
+  document.body.appendChild(welcomeDiv);
+}
+
+const jsonUrl = 'https://nav.savefamily.net/api/';
+const redirectUrl = 'https://statistics.savefamily.net/redirect';
+
+fetch(jsonUrl)
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById('container');
+    if(vips){
+      const items = data.data.tools;
+      vips.forEach(vipId => {
+        const item = items.find(item => item.id.toString() === vipId);
+        if(item){
+          const div = document.createElement('div');
+          div.classList.add('bg-grey-500', 'rounded-lg', 'p-4', 'shadow-lg');
+
+          const innerHTML = `
+            <div class="flex items-center justify-center">
+              <img class="max-h-36" src="${item.logo}" alt="${item.name}" title="${item.name}" />
+            </div>
+            <div class="font-large text-gray-900">${item.name}</div>
+          `;
+
+          div.innerHTML = innerHTML;
+
+          const link = document.createElement('a');
+          link.href = `${redirectUrl}?metric=NAV&name=` + encodeURIComponent(item.name) + `&target=${item.url}`;
+          link.appendChild(div);
+
+          container.appendChild(link);
+        }
+      });
+      return;
+    }
+
+  })
+  .catch(error => console.error('Error fetching JSON:', error));
+</script>
+
+</body>
+</html>
