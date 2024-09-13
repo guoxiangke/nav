@@ -10,21 +10,21 @@
 	<div class="relative overflow-auto rounded-xl p-8">
 	  <div id="container" class="text-black-100 bg-stripes-grey grid grid-cols-3 grid-rows-3 gap-4 rounded-lg text-center font-mono text-sm leading-6">
 	  </div>
-	  <footer class="mt-8 p-4 bg-gray-100 rounded-lg text-center">
-	    <h2 class="font-bold text-lg">联络我们</h2>
-	    <p><strong>良友电台</strong></p>
-	    <div class="text-left text-gray-500 inline-block">
-	      <p>短信：<a href="sms:+8613229966122">+86 1322 9966 122</a></p>
-	      <p>电邮：<a href="mailto:arc@liangyou.net">arc@liangyou.net</a></p>
-	      <p>地址：香港九龙大有街1号10楼</p>
-	    </div>
-	    <br><br>
-	    <p><strong>良友圣经学院</strong></p>
-	    <div class="text-left text-gray-500 inline-block">
-	      <p>电邮：<a href="mailto:school@liangyou.net">school@liangyou.net</a></p>
-	      <p>地址：香港九龙大有街1号10楼</p>
-	    </div>
-	  </footer>
+    <footer class="mt-8 p-4 bg-gray-100 rounded-lg text-center">
+      <h2 class="font-bold text-lg">联络我们</h2>
+      <p><strong>良友电台</strong></p>
+      <div class="text-left text-gray-500 inline-block">
+        <p>短信：<a href="sms:+8613229966122">+86 1322 9966 122</a></p>
+        <p>电邮：<a href="mailto:arc@liangyou.net">arc@liangyou.net</a></p>
+        <p>地址：香港九龙大有街1号10楼</p>
+      </div>
+      <br><br>
+      <p><strong>良友圣经学院</strong></p>
+      <div class="text-left text-gray-500 inline-block">
+        <p>电邮：<a href="mailto:school@liangyou.net">school@liangyou.net</a></p>
+        <p>地址：香港九龙大有街1号10楼</p>
+      </div>
+    </footer>
 	</div>
 <script>
 const urlParams = new URLSearchParams(window.location.search);
@@ -40,42 +40,142 @@ if (sponsorParam) {
   document.body.appendChild(welcomeDiv);
 }
 
-const jsonUrl = 'https://nav.savefamily.net/api/';
+const staticData = {
+  "data": {
+    "tools": [
+      {
+        "id": 26,
+        "name": "良友电台网站",
+        "url": "https://ly1.zyqstx.net",
+        "logo": "https://images.simai.life/images/2024/09/a22fe2f4de3d5e4917d0b3b513862057.png",
+        "catelog": "赞美诗歌",
+        "desc": "良友网站",
+        "sort": 1,
+        "hide": true
+      },
+      {
+        "id": 27,
+        "name": "同行频道",
+        "url": "https://ly1.zyqstx.net/zh-sc/listen/channel/channel-tx",
+        "logo": "https://images.simai.life/images/2024/09/38ce305df1e32f64d8ec2ffce563854d.jpg",
+        "catelog": "赞美诗歌",
+        "desc": "同行頻道",
+        "sort": 1,
+        "hide": true
+      },
+      {
+        "id": 28,
+        "name": "良院网站",
+        "url": "https://zxply.net",
+        "logo": "https://images.simai.life/images/2024/09/de42b75cd3e4cd7863866dfc13656722.jpg",
+        "catelog": "赞美诗歌",
+        "desc": "良友圣经学院",
+        "sort": 1,
+        "hide": true
+      },
+      {
+        "id": 29,
+        "name": "资源库",
+        "url": "https://r2.zyqstx.net",
+        "logo": "https://images.simai.life/images/2024/09/a22fe2f4de3d5e4917d0b3b513862057.png",
+        "catelog": "赞美诗歌",
+        "desc": "资源库",
+        "sort": 1,
+        "hide": true
+      },
+      {
+        "id": 30,
+        "name": "友音乐频道",
+        "url": "https://r.lyapp2.net/song",
+        "logo": "https://images.simai.life/images/2024/09/a22fe2f4de3d5e4917d0b3b513862057.png",
+        "catelog": "赞美诗歌",
+        "desc": "音乐频道",
+        "sort": 1,
+        "hide": true
+      },
+      {
+        "id": 31,
+        "name": "良院自学平台",
+        "url": "https://app.zxply.net",
+        "logo": "https://images.simai.life/images/2024/09/de42b75cd3e4cd7863866dfc13656722.jpg",
+        "catelog": "赞美诗歌",
+        "desc": "良院自学平台",
+        "sort": 1,
+        "hide": true
+      },
+      {
+        "id": 32,
+        "name": "良院自我评测",
+        "url": "https://zwpc.net/elearn/servlet/elearn.Awlogin",
+        "logo": "https://images.simai.life/images/2024/09/de42b75cd3e4cd7863866dfc13656722.jpg",
+        "catelog": "赞美诗歌",
+        "desc": "良院自我评测",
+        "sort": 1,
+        "hide": true
+      },
+      {
+        "id": 33,
+        "name": "良院广播平台",
+        "url": "https://gbpt82.net",
+        "logo": "https://images.simai.life/images/2024/09/de42b75cd3e4cd7863866dfc13656722.jpg",
+        "catelog": "赞美诗歌",
+        "desc": "良院广播平台",
+        "sort": 1,
+        "hide": true
+      },
+      {
+        "id": 9,
+        "name": "朋友聆听",
+        "url": "https://pylt.app/",
+        "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/6b/51/e7/6b51e79a-b09d-76e5-b261-0d69c6a5cf84/AppIcon-0-0-85-220-0-0-0-0-4-0-0-0-2x-sRGB-0-0-0-0-0.png/246x0w.png",
+        "catelog": "门徒训练",
+        "desc": "朋友聆听",
+        "sort": 1,
+        "hide": true
+      },
+      {
+        "id": 19,
+        "name": "每日与主同行",
+        "url": "https://statistics.savefamily.net/go/pastorlu",
+        "logo": "https://images.simai.life/images/2024/05/0c075b6fda38357bec9574f35f775b78.jpg",
+        "catelog": "赞美诗歌",
+        "desc": "号角音乐",
+        "sort": 1,
+        "hide": true
+      }
+    ]
+  },
+  "success": true
+};
+
 const redirectUrl = 'https://statistics.savefamily.net/redirect';
 
-fetch(jsonUrl)
-  .then(response => response.json())
-  .then(data => {
-    const container = document.getElementById('container');
-    if(vips){
-      const items = data.data.tools;
-      vips.forEach(vipId => {
-        const item = items.find(item => item.id.toString() === vipId);
-        if(item){
-          const div = document.createElement('div');
-          div.classList.add('bg-grey-500', 'rounded-lg', 'p-4', 'shadow-lg');
+const container = document.getElementById('container');
+if(vips){
+  const items = staticData.data.tools;
+  vips.forEach(vipId => {
+    const item = items.find(item => item.id.toString() === vipId);
+    if(item){
+      const div = document.createElement('div');
+      div.classList.add('bg-grey-500', 'rounded-lg', 'p-4', 'shadow-lg');
 
-          const innerHTML = `
-            <div class="flex items-center justify-center">
-              <img class="max-h-36" src="${item.logo}" alt="${item.name}" title="${item.name}" />
-            </div>
-            <div class="font-large text-gray-900">${item.name}</div>
-          `;
+      const innerHTML = `
+        <div class="flex items-center justify-center">
+          <img class="max-h-36" src="${item.logo}" alt="${item.name}" title="${item.name}" />
+        </div>
+        <div class="font-large text-gray-900">${item.name}</div>
+      `;
 
-          div.innerHTML = innerHTML;
+      div.innerHTML = innerHTML;
 
-          const link = document.createElement('a');
-          link.href = `${redirectUrl}?metric=NAV&name=` + encodeURIComponent(item.name) + `&target=${item.url}`;
-          link.appendChild(div);
+      const link = document.createElement('a');
+      link.href = `${redirectUrl}?metric=NAV&name=` + encodeURIComponent(item.name) + `&target=${item.url}`;
+      link.appendChild(div);
 
-          container.appendChild(link);
-        }
-      });
-      return;
+      container.appendChild(link);
     }
-
-  })
-  .catch(error => console.error('Error fetching JSON:', error));
+  });
+}
 </script>
 
 </body>
